@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DvdRental", "DvdRental.csproj", "{8563C519-2CEC-40EF-9B1B-891FB40255D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6DB137C0-D352-4AA3-8F48-D54A5BBC39B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,8 @@ Global
 		{8563C519-2CEC-40EF-9B1B-891FB40255D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8563C519-2CEC-40EF-9B1B-891FB40255D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8563C519-2CEC-40EF-9B1B-891FB40255D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8563C519-2CEC-40EF-9B1B-891FB40255D1} = {6DB137C0-D352-4AA3-8F48-D54A5BBC39B2}
 	EndGlobalSection
 EndGlobal
