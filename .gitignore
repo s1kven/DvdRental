@@ -1,0 +1,17 @@
+[Bb]in
+[Oo]bj
+[Dd]ebug/
+[Rr]elease/
+[Pp]ackages/
+#[Cc]omponents/
+.Sources/
+
+
+*.user
+*.userprefs
+*.suo
+*.dll
+*.bak
+.idea/
+.vs/
+.vs/config/applicationhost.config
