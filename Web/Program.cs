@@ -1,3 +1,4 @@
+using Carter;
 using Infrastructure.Repositories;
 using Web.Services;
 
@@ -14,6 +15,7 @@ var dbSettings = new DatabaseSettings
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCarter();
 DatabaseService.Instance.AddDbContext(builder.Services, dbSettings);
 
 var app = builder.Build();
@@ -27,6 +29,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () => "Hello World!");
+app.MapCarter();
 
 app.Run();
