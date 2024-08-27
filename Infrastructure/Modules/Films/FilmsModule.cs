@@ -1,4 +1,5 @@
 using Infrastructure.Data;
+using Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,9 +28,9 @@ public sealed class FilmsModule() : BaseModule("/Films")
             ToListAsync();
         if (films.Count == 0)
         {
-            return Results.NoContent();
+            return Result.NoContent();
         }
-        return Results.Ok(films);
+        return Result.Ok(films);
     }
     
     #endregion GET
