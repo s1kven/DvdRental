@@ -1,4 +1,5 @@
 using Carter;
+using Infrastructure.Helpers;
 using Infrastructure.Repositories;
 using Web.Services;
 
@@ -19,6 +20,13 @@ builder.Services.AddCarter();
 DatabaseService.Instance.AddDbContext(builder.Services, dbSettings);
 
 var app = builder.Build();
+
+app.UseExceptionHandler(exceptionHandlerApp 
+    => exceptionHandlerApp.Run(async context 
+        => await Results.Problem()
+            .ExecuteAsync(context)));
+
+app.UseExceptionHandleMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
