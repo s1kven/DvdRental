@@ -1,3 +1,4 @@
+using Application.Dtos.Responses;
 using Infrastructure.Common;
 using Microsoft.AspNetCore.Http;
 using StatusCodes = Infrastructure.Enums.StatusCodes;
@@ -10,7 +11,7 @@ namespace Infrastructure.Helpers;
 
 public static class Result
 {
-    public static IResult Ok<TValue>(TValue? value)
+    public static IResult Ok<TValue>(TValue? value) where TValue : IResponseData
     {
         var response = new ApiResponse<TValue>(true, StatusCodes.Status200Ok, value);
         

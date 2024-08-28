@@ -1,8 +1,9 @@
+using Application.Dtos.Responses;
 using Infrastructure.Enums;
 
 namespace Infrastructure.Common;
 
-public sealed record ApiResponse<T>
+public sealed record ApiResponse<T> where T : IResponseData
 {
     public bool Success { get; init; }
     

@@ -2,6 +2,6 @@ namespace Infrastructure.Enums;
 
 public enum StatusCodes
 {
-    None,
+    None = -1,
     Status200Ok = 200,
 }

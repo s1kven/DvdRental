@@ -1,3 +1,4 @@
+using Application.Dtos.Responses;
 using Infrastructure.Data;
 using Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
@@ -26,11 +27,12 @@ public sealed class FilmsModule() : BaseModule("/Films")
         var currentPosition = (page - 1) * PageSize;
         var films = await dbContext.Films.Skip(currentPosition).Take(PageSize).
             ToListAsync();
-        if (films.Count == 0)
+        var responseData = new GetFilmsResponseData() { Films = films };
+        if (responseData.Films.Count == 0)
         {
             return Result.NoContent();
         }
-        return Result.Ok(films);
+        return Result.Ok(responseData);
     }
     
     #endregion GET
