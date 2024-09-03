@@ -1,7 +1,6 @@
-using Infrastructure.Data;
-using Infrastructure.Repositories;
-using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Persistence;
+using Persistence.Config;
 
 namespace Web.Services;
 

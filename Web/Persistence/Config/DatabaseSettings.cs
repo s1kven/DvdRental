@@ -1,4 +1,4 @@
-namespace Infrastructure.Repositories;
+namespace Persistence.Config;
 
 public record DatabaseSettings
 {

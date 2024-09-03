@@ -1,10 +1,9 @@
-using Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.Services;
+namespace Persistence.Config;
 
 public interface IDatabaseService
 {
-    public void AddDbContext(IServiceCollection services, 
+    public void AddDbContext(IServiceCollection services,
         DatabaseSettings databaseSettings);
 }

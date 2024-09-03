@@ -1,13 +1,10 @@
 using Application.Dtos.Responses;
-using Infrastructure.Data;
 using Infrastructure.Helpers;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using Persistence;
 
-namespace Infrastructure.Modules.Films;
+namespace Web.Endpoints.Films;
 
 public sealed class FilmsModule() : BaseModule("/Films")
 {

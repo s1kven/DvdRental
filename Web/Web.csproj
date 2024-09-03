@@ -7,11 +7,49 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Carter" Version="8.2.1" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+      <ProjectReference Include="Persistence\Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Persistance\obj\Persistance.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Persistance\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Persistance\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Persistence\obj\Persistance.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Persistence\obj\Persistence.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Persistence\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Persistence\obj\project.packagespec.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Persistence\Config\DatabaseSettings.cs">
+        <Link>Persistance\Config\DatabaseSettings.cs</Link>
+      </Compile>
+      <Compile Update="Persistence\Config\IDatabaseService.cs">
+        <Link>Persistance\Config\IDatabaseService.cs</Link>
+      </Compile>
+      <Compile Remove="Persistance\**" />
+      <Compile Remove="Persistence\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Persistance\**" />
+      <EmbeddedResource Remove="Persistence\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Persistance\**" />
+      <Content Remove="Persistence\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Persistance\**" />
+      <None Remove="Persistence\**" />
     </ItemGroup>
 
 </Project>

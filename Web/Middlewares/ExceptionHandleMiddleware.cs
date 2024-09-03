@@ -1,10 +1,8 @@
 using Application.Dtos.Responses;
 using Infrastructure.Common;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using StatusCodes = Infrastructure.Enums.StatusCodes;
 
-namespace Infrastructure.Helpers;
+namespace Web.Middlewares;
 
 public class ExceptionHandleMiddleware
 {

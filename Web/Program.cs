@@ -1,6 +1,7 @@
 using Carter;
-using Infrastructure.Helpers;
-using Infrastructure.Repositories;
+using Persistence.Config;
+using Web.Extensions;
+using Web.Middlewares;
 using Web.Services;
 
 var dbSettings = new DatabaseSettings
@@ -17,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCarter();
-DatabaseService.Instance.AddDbContext(builder.Services, dbSettings);
+builder.Services.AddDbContext(dbSettings);
 
 var app = builder.Build();
 
