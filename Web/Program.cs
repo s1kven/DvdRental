@@ -1,8 +1,8 @@
+using Application.Services;
 using Carter;
+using Persistence;
 using Persistence.Config;
-using Web.Extensions;
 using Web.Middlewares;
-using Web.Services;
 
 var dbSettings = new DatabaseSettings
 {
@@ -18,12 +18,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCarter();
-builder.Services.AddDbContext(dbSettings);
+
+builder.Services.AddPersistence(dbSettings);
+
+builder.Services.AddScoped<FilmsService>();
 
 var app = builder.Build();
 
-app.UseExceptionHandler(exceptionHandlerApp 
-    => exceptionHandlerApp.Run(async context 
+app.UseExceptionHandler(exceptionHandlerApp
+    => exceptionHandlerApp.Run(async context
         => await Results.Problem()
             .ExecuteAsync(context)));
 

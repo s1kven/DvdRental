@@ -1,4 +1,4 @@
-namespace Application.Dtos.Responses;
+namespace Domain.Entities;
 
 public interface IResponseData
 {

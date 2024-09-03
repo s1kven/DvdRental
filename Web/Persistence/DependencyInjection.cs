@@ -1,22 +1,34 @@
+using Domain.Films;
 using Microsoft.EntityFrameworkCore;
-using Persistence;
+using Microsoft.Extensions.DependencyInjection;
 using Persistence.Config;
+using Persistence.Repositories;
 
-namespace Web.Services;
+namespace Persistence;
 
-public sealed class DatabaseService : IDatabaseService
+public static class DependencyInjection
 {
     private const string ConnectionStringTemplate =
         "Host={HOST};Port={PORT};Database={DATABASE};" +
         "Username={USERNAME};Password={PASSWORD};Trust Server Certificate={TRUSTCERTIFICATE};";
+    
+    public static IServiceCollection AddPersistence(this IServiceCollection services, 
+        DatabaseSettings databaseSettings)
+    {
+        AddDbContext(services, databaseSettings);
 
-    public void AddDbContext(IServiceCollection services, DatabaseSettings databaseSettings)
+        services.AddScoped<IFilmsRepository, FilmsRepository>();
+        
+        return services;
+    }
+
+    public static void AddDbContext(IServiceCollection services, DatabaseSettings databaseSettings)
     {
         services.AddDbContext<ApplicationDbContext>(
             opt => BuildDbContext(opt, databaseSettings));
     }
 
-    private void BuildDbContext(DbContextOptionsBuilder optionsBuilder, DatabaseSettings settings)
+    private static void BuildDbContext(DbContextOptionsBuilder optionsBuilder, DatabaseSettings settings)
     {
         var connectionString = ConnectionStringTemplate
             .Replace("{HOST}", settings.Host)
@@ -28,12 +40,4 @@ public sealed class DatabaseService : IDatabaseService
 
         optionsBuilder.UseNpgsql(connectionString);
     }
-
-    #region Instance
-
-    private static IDatabaseService _instance;
-
-    public static IDatabaseService Instance => _instance ??= new DatabaseService();
-
-    #endregion Instance
 }
